@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press & Media | JeevCare</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .press-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .press-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .press-date {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .press-source {
+            color: var(--brand-primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .press-hero {
+            background: linear-gradient(135deg, hsl(200, 40%, 95%) 0%, hsl(260, 40%, 95%) 100%);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .kit-btn {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--text-color);
+            border: 2px solid #e5e7eb;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .kit-btn:hover {
+            border-color: var(--brand-primary);
+            color: var(--brand-primary);
+        }
+    </style>
+</head>
+
+<body class="pt-100">
+
+    <div id="nav-placeholder"></div>
+
+    <header class="press-hero animate-fade-in">
+        <h1 class="hero-title" style="margin-bottom: 15px;">Press & Media</h1>
+        <p class="hero-subtitle">JeevCare in the news. Resources for journalists and media partners.</p>
+        <a href="#" class="kit-btn">📁 Download Press Kit (Assets & Logos)</a>
+    </header>
+
+    <main class="container animate-fade-in" style="padding-top: 50px; padding-bottom: 80px;">
+        <h2>Recent Coverage</h2>
+        <div class="press-grid">
+            <article class="glass-card press-card">
+                <span class="press-source">The Daily Gazette</span>
+                <div class="press-date">OCTOBER 12, 2025</div>
+                <h3>How Smart Tech is Revolutionizing Urban Animal Rescue</h3>
+                <p style="color: #6b7280; margin-top: 10px; flex-grow: 1;">A deep dive into how JeevCare's spatial
+                    routing algorithm cut emergency response times by 40% in metropolitan districts.</p>
+                <a href="#"
+                    style="color: var(--brand-primary); font-weight: 600; margin-top: 15px; display: inline-block;">Read
+                    Article &rarr;</a>
+            </article>
+
+            <article class="glass-card press-card">
+                <span class="press-source">Civic Tech Weekly</span>
+                <div class="press-date">SEPTEMBER 28, 2025</div>
+                <h3>Bridging the Gap Between Citizens and City Authorities</h3>
+                <p style="color: #6b7280; margin-top: 10px; flex-grow: 1;">Highlighting the municipal dashboard
+                    integration that allows city officials to track live rescue data.</p>
+                <a href="#"
+                    style="color: var(--brand-primary); font-weight: 600; margin-top: 15px; display: inline-block;">Read
+                    Article &rarr;</a>
+            </article>
+
+            <article class="glass-card press-card">
+                <span class="press-source">National Animal Welfare Post</span>
+                <div class="press-date">JULY 15, 2025</div>
+                <h3>Top 10 Innovations Changing Lives: JeevCare Ranked #1</h3>
+                <p style="color: #6b7280; margin-top: 10px; flex-grow: 1;">An overview of the top startups focused on
+                    animal rights, spotlighting JeevCare's new real-time deployment radar.</p>
+                <a href="#"
+                    style="color: var(--brand-primary); font-weight: 600; margin-top: 15px; display: inline-block;">Read
+                    Article &rarr;</a>
+            </article>
+        </div>
+
+        <div class="glass-card mt-40 text-center" style="background: var(--brand-primary); color: white;">
+            <h2 style="color: white; margin-bottom: 15px;">Media Inquiries</h2>
+            <p style="margin-bottom: 20px; opacity: 0.9;">For press inquiries, interviews, or speaking engagements,
+                please reach out to our communications team.</p>
+            <a href="mailto:press@jeevcare.org" class="btn btn-secondary"
+                style="background: white; color: var(--brand-primary);">press@jeevcare.org</a>
+        </div>
+    </main>
+
+    <script src="/js/layout.js"></script>
+    <script>window.Layout.renderPublicNav('nav-placeholder', '');</script>
+</body>
+
+</html>

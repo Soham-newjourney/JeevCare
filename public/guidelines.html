@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Guidelines | JeevCare</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        .guidelines-hero {
+            background: var(--brand-dark);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .guidelines-hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .guidelines-hero p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .rule-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #eee;
+        }
+
+        .rule-icon {
+            font-size: 2rem;
+            background: #f3f4f6;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .rule-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .rule-content p {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .do-dont-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .do-box {
+            background: rgba(16, 185, 129, 0.05);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--state-success);
+        }
+
+        .dont-box {
+            background: rgba(239, 68, 68, 0.05);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--state-danger);
+        }
+
+        .list-do li::before {
+            content: '✓';
+            color: var(--state-success);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .list-dont li::before {
+            content: '✕';
+            color: var(--state-danger);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        ul.list-do,
+        ul.list-dont {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.list-do li,
+        ul.list-dont li {
+            margin-bottom: 12px;
+            color: #4b5563;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .rule-card {
+                flex-direction: column;
+            }
+
+            .do-dont-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="pt-100">
+
+    <div id="nav-placeholder"></div>
+
+    <header class="guidelines-hero animate-fade-in">
+        <h1>Community Guidelines</h1>
+        <p>JeevCare is a collaborative network driven by compassion. To ensure the safety of the animals and the
+            efficiency of our NGO partners, everyone must adhere to these standards.</p>
+    </header>
+
+    <main class="container animate-fade-in" style="padding-top: 60px; padding-bottom: 80px;">
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="rule-card">
+                <div class="rule-icon">🚨</div>
+                <div class="rule-content">
+                    <h3>Absolute Truth in Reporting</h3>
+                    <p>When generating an emergency SOS, accuracy is paramount. Do not exaggerate the condition to get a
+                        faster response, and absolutely never make a false report. Every deployed ambulance costs time
+                        and money; false reports will lead to permanent IP and account bans.</p>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">🤝</div>
+                <div class="rule-content">
+                    <h3>Respect for Rescuers & NGOs</h3>
+                    <p>NGOs operate under immense pressure, often with limited funding. Treat fleet drivers, shelter
+                        staff, and veterinarians with the utmost respect. Abuse, harassment, or verbal threats directed
+                        at assigned personnel will not be tolerated.</p>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">📸</div>
+                <div class="rule-content">
+                    <h3>Graphic Content Warning</h3>
+                    <p>While uploading images of injured animals aids diagnosis, refrain from uploading unnecessarily
+                        gruesome context on public community forums. Use the designated 'Emergency Report' private
+                        upload instead.</p>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">💬</div>
+                <div class="rule-content">
+                    <h3>Constructive Community Forums</h3>
+                    <p>Keep the local community boards focused on civic animal welfare (lost pets, feeding drives,
+                        adoption). Spam, commercial advertising unrelated to pet services, and political debates are
+                        prohibited.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="do-dont-grid">
+            <div class="do-box">
+                <h3 style="color: var(--state-success); margin-bottom: 20px; font-size: 1.4rem;">Please Do</h3>
+                <ul class="list-do">
+                    <li>Stand by near the injured animal (at a safe distance) after reporting until help arrives if
+                        possible.</li>
+                    <li>Provide clear, well-lit photos when generating a report to help vets assess the required
+                        equipment.</li>
+                    <li>Update the report status to "Resolved" if the animal recovers or leaves the area before an NGO
+                        accepts the case.</li>
+                    <li>Use the direct chat feature to guide the ambulance driver to exact coordinates if GPS is
+                        failing.</li>
+                </ul>
+            </div>
+
+            <div class="dont-box">
+                <h3 style="color: var(--state-danger); margin-bottom: 20px; font-size: 1.4rem;">Please Don't</h3>
+                <ul class="list-dont">
+                    <li>Do not attempt to move severely traumatized or aggressive injured animals yourself prior to
+                        expert arrival.</li>
+                    <li>Do not file duplicate reports for the same incident (the system automatically flags a 2km radius
+                        anyway).</li>
+                    <li>Do not expect instantaneous arrivals. High-priority "SOS Critical" cases (accidents/bleeding)
+                        will preempt standard illness cases in the dispatch queue.</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/js/layout.js"></script>
+    <script>window.Layout.renderPublicNav('nav-placeholder', '');</script>
+</body>
+
+</html>

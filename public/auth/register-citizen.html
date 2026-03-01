@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join JeevCare</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, hsl(210, 30%, 96%) 0%, hsl(152, 68%, 95%) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .role-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 8px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+        }
+
+        .role-btn {
+            flex: 1;
+            min-width: 130px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #6b7280;
+            transition: all var(--transition-fast);
+        }
+
+        .role-btn.active {
+            background: var(--brand-primary);
+            color: white;
+            box-shadow: 0 2px 10px hsla(152, 68%, 45%, 0.3);
+        }
+
+        .dynamic-fields {
+            display: none;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+
+        .dynamic-fields.active {
+            display: block;
+        }
+
+        .error-msg {
+            color: var(--color-danger);
+            background: hsla(354, 70%, 54%, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container auth-container animate-fade-in">
+        <div class="auth-header">
+            <a href="/index.html" class="nav-logo" style="justify-content: center;">🐾 JeevCare</a>
+            <p class="mt-40">Create an account to join the network.</p>
+        </div>
+
+        <div class="glass-card">
+
+            <!-- Selection mechanism -->
+            <div class="role-selector">
+                <div class="role-btn active" data-role="citizen">Citizen</div>
+                <div class="role-btn" data-role="ngo">Rescue NGO</div>
+                <div class="role-btn" data-role="authority">Authority</div>
+                <div class="role-btn" data-role="service_provider">Vets/Services</div>
+            </div>
+
+            <div id="errorBox" class="error-msg"></div>
+
+            <form id="registerForm">
+                <input type="hidden" id="selectedRole" value="citizen">
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Secret Password</label>
+                    <input type="password" id="password" class="form-input" minlength="6" required>
+                </div>
+
+                <!-- Citizen Specific -->
+                <div id="fields_citizen" class="dynamic-fields active">
+                    <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">No extra details needed for
+                        Citizens.</p>
+                </div>
+
+                <!-- NGO Specific -->
+                <div id="fields_ngo" class="dynamic-fields">
+                    <div class="form-group">
+                        <label class="form-label">Organization Name</label>
+                        <input type="text" id="organizationName" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Registration PIN / License</label>
+                        <input type="text" id="registrationNumber" class="form-input">
+                    </div>
+                    <hr style="border:0; border-top:1px solid #eee; margin: 20px 0;">
+                    <p style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">HQ Location Constraints</p>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Latitude</label>
+                            <input type="text" id="ngo_lat" class="form-input" placeholder="e.g. 19.0760">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Longitude</label>
+                            <input type="text" id="ngo_lng" class="form-input" placeholder="e.g. 72.8777">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline mb-20"
+                        onclick="detectLocation('ngo_lat', 'ngo_lng', this)">Detect Map Bounds</button>
+                    <div id="ngo_loc_warning" style="color:var(--brand-primary); font-size: 0.8rem;"></div>
+                </div>
+
+                <!-- Authority Specific -->
+                <div id="fields_authority" class="dynamic-fields">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Department</label>
+                            <input type="text" id="department" class="form-input" placeholder="e.g. Wildlife Dept">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Jurisdiction Ward</label>
+                            <input type="text" id="ward" class="form-input" placeholder="Ward A">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Provider Specific -->
+                <div id="fields_service_provider" class="dynamic-fields">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Business Name</label>
+                            <input type="text" id="businessName" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Service Type</label>
+                            <select id="serviceType" class="form-input">
+                                <option value="vet">Veterinarian</option>
+                                <option value="shelter">Shelter</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr style="border:0; border-top:1px solid #eee; margin: 20px 0;">
+                    <p style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">Clinic GPS Location</p>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Latitude</label>
+                            <input type="text" id="sp_lat" class="form-input" placeholder="e.g. 19.0760">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Longitude</label>
+                            <input type="text" id="sp_lng" class="form-input" placeholder="e.g. 72.8777">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline mb-20"
+                        onclick="detectLocation('sp_lat', 'sp_lng', this)">Drop Map Pin</button>
+                    <div id="sp_loc_warning" style="color:var(--brand-primary); font-size: 0.8rem;"></div>
+                </div>
+
+                <div class="form-group mt-40">
+                    <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 20px;">By joining, you consent to GPS
+                        localization data when you report emergencies to route NGOs effectively.</p>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="registerBtn">Create
+                        Account</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-40" style="font-size: 0.9rem;">
+                Already have an account? <a href="/auth/login.html">Login instead</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script>
+        // Tabbing logic
+        const roleBtns = document.querySelectorAll('.role-btn');
+        const roleHiddenInput = document.getElementById('selectedRole');
+        const allDynamicFields = document.querySelectorAll('.dynamic-fields');
+
+        roleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                roleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const role = btn.getAttribute('data-role');
+                roleHiddenInput.value = role;
+
+                allDynamicFields.forEach(f => f.classList.remove('active'));
+                document.getElementById('fields_' + role).classList.add('active');
+            });
+        });
+
+        function detectLocation(latId, lngId, btnElement) {
+            if (navigator.geolocation) {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "Finding satelites...";
+
+                // Get the warning div which is next to the button
+                const warningDiv = btnElement.nextElementSibling;
+                warningDiv.innerText = "";
+                warningDiv.style.color = "var(--brand-primary)";
+
+                navigator.geolocation.getCurrentPosition((position) => {
+                    document.getElementById(latId).value = position.coords.latitude;
+                    document.getElementById(lngId).value = position.coords.longitude;
+                    btnElement.innerText = originalText;
+                    warningDiv.innerText = "✓ Exact coordinates locked.";
+                    warningDiv.style.color = "var(--color-success)";
+                }, (err) => {
+                    alert("Location detection failed: " + err.message + ". Please type coordinates manually.");
+                    btnElement.innerText = originalText;
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Submit logic
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('registerBtn');
+            const errorBox = document.getElementById('errorBox');
+
+            btn.innerText = "Creating Account...";
+            btn.disabled = true;
+            errorBox.style.display = "none";
+
+            const role = roleHiddenInput.value;
+            const payload = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                role: role
+            };
+
+            // Inject role specific payloads
+            if (role === 'ngo') {
+                payload.organizationName = document.getElementById('organizationName').value;
+                payload.registrationNumber = document.getElementById('registrationNumber').value;
+
+                let lat = parseFloat(document.getElementById('ngo_lat').value);
+                let lng = parseFloat(document.getElementById('ngo_lng').value);
+                if (isNaN(lat) || isNaN(lng)) {
+                    errorBox.innerText = "Please detect or input valid layout coordinates for your NGO HQ.";
+                    errorBox.style.display = "block";
+                    btn.innerText = "Create Account";
+                    btn.disabled = false;
+                    return;
+                }
+                payload.location = { type: "Point", coordinates: [lng, lat] };
+
+            } else if (role === 'authority') {
+                payload.department = document.getElementById('department').value;
+                payload.ward = document.getElementById('ward').value;
+            } else if (role === 'service_provider') {
+                payload.businessName = document.getElementById('businessName').value;
+                payload.serviceType = document.getElementById('serviceType').value;
+
+                let lat = parseFloat(document.getElementById('sp_lat').value);
+                let lng = parseFloat(document.getElementById('sp_lng').value);
+                if (isNaN(lat) || isNaN(lng)) {
+                    errorBox.innerText = "Please detect or input valid layout coordinates for your Clinic/Service.";
+                    errorBox.style.display = "block";
+                    btn.innerText = "Create Account";
+                    btn.disabled = false;
+                    return;
+                }
+                payload.location = { type: "Point", coordinates: [lng, lat] };
+            }
+
+            try {
+                const res = await window.API.post('/auth/register', payload);
+                window.API.setToken(res.data.token);
+                localStorage.setItem('jeevcare_user', JSON.stringify(res.data));
+                window.API.redirectByRole(res.data.role);
+            } catch (err) {
+                errorBox.innerText = err.message || "An error occurred";
+                errorBox.style.display = "block";
+                btn.innerText = "Create Account";
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

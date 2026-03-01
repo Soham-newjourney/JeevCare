@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | JeevCare</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        .page-header {
+            padding: 150px 0 60px 0;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto 100px auto;
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <header class="page-header animate-fade-in">
+        <div class="container">
+            <h1 style="font-size: 3rem;">Get in Touch</h1>
+            <p>Have questions about JeevCare? Want to partner as an authority? Drop us a line.</p>
+        </div>
+    </header>
+
+    <section class="container animate-fade-in" style="animation-delay: 0.1s;">
+        <div class="contact-grid">
+            <div class="glass-card">
+                <h3>Send a Message</h3>
+                <form id="contactForm" onsubmit="event.preventDefault(); alert('Message sent (Mocked).');">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-input" rows="5" placeholder="How can we help?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+
+            <div class="glass-card" style="background: var(--brand-dark); color: white;">
+                <h3 style="color: white;">Contact Information</h3>
+                <p style="color: #9ca3af; margin-bottom: 30px;">Our support team operates 24/7 for platform emergencies.
+                </p>
+
+                <div style="margin-bottom: 20px;">
+                    <strong style="color: var(--brand-primary);">Email:</strong><br>
+                    support@jeevcare.com
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <strong style="color: var(--brand-primary);">Phone:</strong><br>
+                    +91 1800-JEEV-CARE (Toll Free)
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <strong style="color: var(--brand-primary);">Office:</strong><br>
+                    Cyber Hub, Phase 2<br>Platform HQ Building
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/layout.js"></script>
+
+    <script>window.Layout.renderPublicNav('nav-placeholder', 'contact');</script>
+</body>
+
+</html>

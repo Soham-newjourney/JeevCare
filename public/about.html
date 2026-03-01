@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | JeevCare</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--brand-dark) 0%, hsl(220, 40%, 25%) 100%);
+            color: white;
+            padding: 150px 0 80px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .text-block {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        .text-block p {
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <header class="page-header animate-fade-in">
+        <div class="container">
+            <h1>Our Mission</h1>
+            <p>Bridging the gap between distressed street animals and rapid-response organizations.</p>
+        </div>
+    </header>
+
+    <section class="content-section animate-fade-in" style="animation-delay: 0.2s;">
+        <div class="container">
+            <div class="glass-card text-block">
+                <h2>Why JeevCare Exists</h2>
+                <p>Every day, countless street animals suffer due to accidents, disease, or human conflict. While there
+                    are passionate NGOs ready to help, the communication delay and manual routing of incidents costs
+                    critical time.</p>
+                <p>JeevCare was built to solve the logistical nightmare of matching a reported emergency with the
+                    <strong>closest, available, and verified rescue organization</strong>. </p>
+
+                <h2 class="mt-40">How We Do It</h2>
+                <p>By leveraging a modern Node.js backend equipped with geospatial `$nearSphere` algorithms on MongoDB,
+                    JeevCare instantly calculates workloads and distances.</p>
+                <p>It cuts out the middleman, filters out duplicate reports algorithmically (2km / 6-hour bounds), and
+                    pings the matched NGO via Socket.io milliseconds after a citizen hits "Report".</p>
+
+                <div class="text-center mt-40">
+                    <a href="/auth/register-citizen.html" class="btn btn-primary">Become a Citizen Reporter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/layout.js"></script>
+
+    <script>window.Layout.renderPublicNav('nav-placeholder', 'about');</script>
+</body>
+
+</html>

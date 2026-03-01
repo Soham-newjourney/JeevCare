@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | JeevCare</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        .page-header {
+            padding: 150px 0 60px 0;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--brand-dark);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            color: #4b5563;
+            display: none;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--brand-primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <header class="page-header animate-fade-in">
+        <div class="container">
+            <h1 style="font-size: 3rem;">Frequently Asked Questions</h1>
+            <p>Everything you need to know about the platform and reporting.</p>
+        </div>
+    </header>
+
+    <section class="container animate-fade-in" style="animation-delay: 0.1s; max-width: 800px; margin-bottom: 100px;">
+        <div class="glass-card faq-item" onclick="this.classList.toggle('active')">
+            <div class="faq-question">How does the routing algorithm work? <span>+</span></div>
+            <div class="faq-answer">JeevCare uses a spatial $nearSphere database query. When you report an incident with
+                a location, we instantly query all verified NGOs within a 10km radius. We then factor in their current
+                active caseloads to assign the case to the most available and closest responder.</div>
+        </div>
+
+        <div class="glass-card faq-item" onclick="this.classList.toggle('active')">
+            <div class="faq-question">Can I report anonymously? <span>+</span></div>
+            <div class="faq-answer">Yes. You do not need to register to report an emergency. However, registered
+                Citizens earn Trust Scores for valid reports, prioritizing their tickets automatically in the queue.
+            </div>
+        </div>
+
+        <div class="glass-card faq-item" onclick="this.classList.toggle('active')">
+            <div class="faq-question">How are duplicate reports handled? <span>+</span></div>
+            <div class="faq-answer">We employ a robust duplication mechanism. If a report is made for the same animal
+                type within a 2km radius inside a 6-hour window, the new report is automatically merged into the master
+                assignment timeline, reducing spam.</div>
+        </div>
+
+        <div class="glass-card faq-item" onclick="this.classList.toggle('active')">
+            <div class="faq-question">How can my NGO join? <span>+</span></div>
+            <div class="faq-answer">Click 'Join Network' and register under the NGO role. You must provide a valid
+                registration number. A local authority will audit your profile and toggle your 'Verified' status, after
+                which you will begin receiving real-time SOS assignments.</div>
+        </div>
+    </section>
+
+    <script src="/js/layout.js"></script>
+
+    <script>window.Layout.renderPublicNav('nav-placeholder', 'faq');</script>
+</body>
+
+</html>
