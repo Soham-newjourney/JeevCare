@@ -42,3 +42,4 @@ server {
 1. **Automated Unit Tests**: Use Jest to test the logic within `services/incidentService.js` (Trust Score, Duplicate Detection logic).
 2. **Automated Integration Tests**: Use Supertest with Jest to mock Express API endpoints, testing HTTP responses and JWT auth blocks. Use `mongodb-memory-server` for geospatial DB mocking.
 3. **Manual WebSocket Verification**: Use Postman or a simple HTML/js client connecting to `ws://localhost:5000` to emit `join_ngo_room` and listen for `case_assigned` events when posting new incidents.
+<!-- commit 2 -->
