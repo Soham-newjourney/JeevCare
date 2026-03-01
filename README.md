@@ -44,3 +44,4 @@ server {
 3. **Manual WebSocket Verification**: Use Postman or a simple HTML/js client connecting to `ws://localhost:5000` to emit `join_ngo_room` and listen for `case_assigned` events when posting new incidents.
 <!-- commit 2 -->
 <!-- commit 3 -->
+<!-- commit 4 -->
