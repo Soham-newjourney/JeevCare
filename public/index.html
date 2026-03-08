@@ -2,151 +2,159 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="JeevCare - Empowering Citizens and NGOs to save distressed animals.">
-    <title>JeevCare | Smart Civic Web Platform</title>
-    <!-- Content Security Policy (Optional based on helmet config) -->
-    <link rel="stylesheet" href="/css/index.css">
-    <style>
-        /* Hero Section Scoped Styles */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg, hsl(210, 30%, 96%) 0%, hsl(152, 68%, 95%) 100%);
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 50vh;
-            height: 50vh;
-            background: var(--brand-primary);
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.15;
-            z-index: 0;
-        }
+<meta name="description" content="JeevCare - Empowering Citizens and NGOs to save distressed animals.">
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 800px;
-        }
+<title>JeevCare | Smart Civic Web Platform</title>
 
-        .hero-title {
-            font-size: 4rem;
-            color: var(--brand-dark);
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
+<link rel="stylesheet" href="/css/index.css">
 
-        .hero-title span {
-            color: var(--brand-primary);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: #4b5563;
-            margin-bottom: 40px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-        }
-
-        .feature-card {
-            text-align: center;
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- Top Navigation -->
-    <div id="nav-placeholder"></div>
+<!-- NAVBAR -->
+<div id="nav-placeholder"></div>
 
-    <!-- Hero Section -->
-    <header class="hero animate-fade-in">
-        <div class="container hero-content">
-            <h1 class="hero-title">A Lifeline for <span>Distressed Animals</span></h1>
-            <p class="hero-subtitle">JeevCare empowers citizens to instantly report animal emergencies, instantly
-                geo-routing cases to verified local NGOs and authorities.</p>
-            <div class="hero-actions">
-                <a href="/auth/register-citizen.html" class="btn btn-primary">Report an Emergency</a>
-                <a href="/about.html" class="btn btn-outline">Learn How It Works</a>
-            </div>
-        </div>
-    </header>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="grid-3 animate-fade-in" style="animation-delay: 0.2s;">
-                <div class="glass-card feature-card">
-                    <div class="feature-icon">📍</div>
-                    <h3>Smart Geo-Routing</h3>
-                    <p>Our algorithms instantly find the closest verified NGO with available capacity to handle your
-                        reported case.</p>
-                </div>
-                <div class="glass-card feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Trust & Oversight</h3>
-                    <p>Authority dashboards oversee resolutions, preventing false reports with citizen Trust Scores.</p>
-                </div>
-                <div class="glass-card feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Real-Time Alerts</h3>
-                    <p>Socket-powered dashboards mean NGOs never miss a critical second for a nearby emergency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO SECTION -->
 
-    <!-- Footer implementation snippet -->
-    <footer style="background: var(--brand-dark); color: white; padding: 40px 0; text-align: center;">
-        <div class="container">
-            <p>&copy; 2026 JeevCare Platform. All Rights Reserved.</p>
-        </div>
-    </footer>
+<header class="hero animate-fade-in">
 
-    <!-- Utilities -->
-    <script src="/js/api.js"></script>
-    <script>
-        // Check if user is already logged in, redirect them seamlessly
-        document.addEventListener("DOMContentLoaded", () => {
-            if (window.API.getToken()) {
-                window.API.getProfile()
-                    .then(res => {
-                        console.log("Auto-redirecting logged in user");
-                        window.API.redirectByRole(res.data.role);
-                    })
-                    .catch(() => window.API.logout());
-            }
-        });
-    </script>
-    <script src="/js/layout.js"></script>
+<video autoplay muted loop playsinline class="hero-video">
+<source src="vdo.mp4" type="video/mp4">
+</video>
 
-    <script>window.Layout.renderPublicNav('nav-placeholder', '');</script>
+<div class="paw paw1">🐾</div>
+<div class="paw paw2">🐾</div>
+<div class="paw paw3">🐾</div>
+
+<div class="container hero-content">
+
+<h1 class="hero-title">
+A Lifeline for <span>Distressed Animals</span>
+</h1>
+
+<p class="hero-subtitle">
+JeevCare empowers citizens to instantly report animal emergencies,
+geo-routing cases to verified local NGOs and authorities.
+</p>
+
+<div class="hero-actions">
+
+<a href="/auth/register-citizen.html" class="btn btn-primary">
+🐾 Report an Emergency
+</a>
+
+<a href="/about.html" class="btn btn-outline">
+Learn How It Works
+</a>
+
+</div>
+
+<div class="trust-badges">
+<span>✔ Verified NGOs</span>
+<span>✔ Real-Time Alerts</span>
+<span>✔ Public Safety First</span>
+</div>
+
+</div>
+
+</header>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="container">
+
+<div class="grid-3 animate-fade-in">
+
+<div class="glass-card feature-card">
+
+<div class="feature-icon">📍</div>
+
+<h3>Smart Geo-Routing</h3>
+
+<p>
+Our algorithms instantly find the closest verified NGO
+with available capacity to handle your reported case.
+</p>
+
+</div>
+
+<div class="glass-card feature-card">
+
+<div class="feature-icon">🛡️</div>
+
+<h3>Trust & Oversight</h3>
+
+<p>
+Authority dashboards oversee resolutions and prevent
+false reports through citizen trust scores.
+</p>
+
+</div>
+
+<div class="glass-card feature-card">
+
+<div class="feature-icon">⚡</div>
+
+<h3>Real-Time Alerts</h3>
+
+<p>
+Socket-powered dashboards ensure NGOs never miss
+a critical second for nearby emergencies.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<p>© 2026 JeevCare Platform • All Rights Reserved</p>
+
+</div>
+
+</footer>
+
+
+
+<!-- API -->
+<script src="/js/api.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+if (window.API.getToken()) {
+
+window.API.getProfile()
+.then(res => window.API.redirectByRole(res.data.role))
+.catch(() => window.API.logout())
+
+}
+
+});
+</script>
+
+<script src="/js/layout.js"></script>
+
+<script>
+window.Layout.renderPublicNav('nav-placeholder','home')
+</script>
+
 </body>
-
 </html>
